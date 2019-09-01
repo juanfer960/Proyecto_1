@@ -1,0 +1,33 @@
+{% extends 'baseadmdesign.html' %}
+
+{% block content %}
+    <p>
+	<button type="button" class="btn btn-main-color js-create-project" data-url="{% url 'new_project' %}">
+		Nuevo Proyecto
+	</button>
+    </p>
+    <div class="table-responsive text-nowrap">
+    <table class="table table-sm table-hover" id="project-table">
+        <thead class="thead-light">
+            <tr>
+                <th>Proyecto</th>
+                <th>Descripción</th>
+                <th>Estimado a pagar</th>
+                <th>Fecha de creación</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% include 'core_projects.html' %}
+        </tbody>
+    </table>
+    </div>
+    <div class="modal fade" id="modal-project">
+	    <div class="modal-dialog">
+		    <div class="modal-content">
+
+		    </div>
+	    </div>
+    </div>
+{% endblock %}

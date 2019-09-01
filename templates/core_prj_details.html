@@ -1,0 +1,64 @@
+{% for project_design in project_designs %}
+    <tr>
+        <td>
+            <table class="table table-sm table-borderless table-condensed">
+                <tr>
+                    <td class="label-fields2">Nombre:</td>
+                    <td class="data-fields">{{ project_design.prjdsg_firstname }}</td>
+                </tr>
+                <tr>
+                    <td class="label-fields2">Apellido:</td>
+                    <td class="data-fields">{{ project_design.prjdsg_lastname }}</td>
+                </tr>
+                <tr>
+                    <td class="label-fields2">Email:</td>
+                    <td class="data-fields">{{ project_design.prjdsg_login }}</td>
+                </tr>
+            </table>
+        </td>
+        <td>{{ project_design.prjdsg_price }}</td>
+        <td>{{ project_design.prjdsg_uploaddate }}</td>
+        <td>
+            {% if project_design.prjdsg_status == "P" %}
+                <p>En proceso</p>
+            {% else %}
+                <p>Disponible</p>
+            {% endif %}
+        </td>
+        <td>
+            {% if project_design.prjdsg_original_file.url|length > 1 %}
+                <a href="{{ project_design.prjdsg_original_file.url }}" download target="_blank" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Descargar
+                </a>
+            {% else %}
+                <p>No disponible</p>
+            {% endif %}
+        </td>
+        <td>
+            {% if project_design.prjdsg_processed_file.url|length > 1 %}
+                <a href="{{ project_design.prjdsg_processed_file.url }}" download target="_blank" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Descargar
+                </a>
+            {% else %}
+                <p>Archivo no disponible</p>
+            {% endif %}
+        </td>
+        <td>
+            {% if project_design.prjdsg_status == "D" %}
+                <img src="{{ project_design.prjdsg_processed_file.url }}" class="btn image-preview js-preview-design" data-url="{{ project_design.prjdsg_processed_file.url }}">
+            {% else %}
+                <p>Imagen no disponible.</p>
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        {% empty %}
+    </tr>
+    <tr>
+        <td colspan="7" class="tbl-no-rows">No hay diseños disponibles o no ha iniciado la busqueda.</td>
+    </tr>
+    <script>
+    </script>
+{% endfor %}

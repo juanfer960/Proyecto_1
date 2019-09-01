@@ -1,0 +1,26 @@
+{% extends "baseadmdesign.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="container-flui">
+  <div class="row">
+    <div class="col-md-4" ></div>
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                <h2>LOGIN</h2>
+            </div>
+            <div class="panel-body panel">
+              <form method="POST">
+
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <input type="submit" value="Login" class="btn btn-info">
+              </form>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

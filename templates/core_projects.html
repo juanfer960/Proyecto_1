@@ -1,0 +1,26 @@
+{% for project in site_projects %}
+    <tr>
+        <td>{{ project.prj_name }}</td>
+        <td><div class="form-group"><textarea class="form-control data-fields" cols="45" rows="2" readonly>{{ project.prj_description }}</textarea></div></td>
+        <td class="text-right">{{ project.prj_budget }}</td>
+        <td>{{ project.prj_creationdate }}</td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm js-update-project" data-url="{% url 'update_project' project.id %}">
+            <span class="glyphicon glyphicon-pencil"></span>
+                Editar
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger btn-sm js-delete-project" data-url="{% url 'delete_project' project.id %}">
+            <span class="glyphicon glyphicon-pencil"></span>
+                Eliminar
+            </button>
+        </td>
+    </tr>
+    <tr>
+        {% empty %}
+    </tr>
+    <tr>
+        <td colspan="5" class="tbl-no-rows">No hay proyectos disponibles.</td>
+    </tr>
+{% endfor %}
